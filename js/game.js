@@ -11,7 +11,7 @@ let config = {
         create: create,
         update: update
     },
-    backgroundColor: '#9fe79f',
+    backgroundColor: '#88e288',
     audio: {
         disableWebAudio: true
     },
@@ -23,6 +23,7 @@ let game = new Phaser.Game(config);
 var nextArrow;
 let successfulDropoff;
 
+//---vars de son---
 var holdSound;
 var wrongSound;
 var correctSound;
@@ -31,9 +32,11 @@ var finishSound;
 var soundButton;
 var hasBeenClicked;
 
+//--var de l'étoile de fin---
 var star;
 var starScale;
 
+//---game background---
 var gameBg;
 
 //
@@ -41,8 +44,10 @@ function init() {
 }
 
 function preload() {
+    //---full image in the background---
     this.load.image('background', './assets/peterpanFull-01.png');
     
+    //----members---
     this.load.image('head', './assets/pHead-01.png');
     this.load.image('body', './assets/pBody-01.png');
     this.load.image('handL', './assets/pArmL-01.png');
@@ -50,8 +55,10 @@ function preload() {
     this.load.image('legL', './assets/pLegL-01.png');
     this.load.image('legR', './assets/pLegR-01.png');
     
+    //---flèche next---
     this.load.image('nextArrow', './assets/green-arrow (1).png');
     
+    //---audio--
     this.load.audio('hold', './assets/hold.wav');
     this.load.audio('wrong', './assets/wrong.wav');
     this.load.audio('correct', './assets/correct.wav');
@@ -69,7 +76,7 @@ function preload() {
 }
 
 function create() { 
-    
+    //--game background pattern---
     gameBg = this.add.image(180, 330, 'gameBg');
     gameBg.setScale(0.4);
     gameBg.setVisible(false);
@@ -81,10 +88,11 @@ function create() {
     star.setVisible(false);
     star.setDepth(0);
     
-    
+    //---perso en transparence---
     var image = this.add.image(200, 250, 'background');
     image.alpha = 0.3;
     
+    //---sons---
     holdSound = this.sound.add('hold');
     wrongSound = this.sound.add('wrong');
     correctSound = this.sound.add('correct');
@@ -110,6 +118,7 @@ function create() {
     nextArrow.setScale(0.7);
     nextArrow.setVisible(false);
     
+    //----vars des membres---
     var body = this.add.image(60, 550, 'body', Phaser.Math.RND.pick(frames)).setInteractive();
     this.input.setDraggable(body);
     body.setName('body');
@@ -246,7 +255,7 @@ function update() {
 }
 function onClick(){
 //    window.open("https://www.google.com", "_blank");
-    window.location.replace("http://www.w3schools.com");
+    window.location.replace("https://games.caramel.be/mowgli/index.html");
 
 }
 function enableMusic(){
