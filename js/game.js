@@ -45,15 +45,15 @@ function init() {
 
 function preload() {
     //---full image in the background---
-    this.load.image('background', './assets/peterpanFull-01.png');
+    this.load.image('background', './assets/tiger-01.png');
     
     //----members---
-    this.load.image('head', './assets/pHead-01.png');
-    this.load.image('body', './assets/pBody-01.png');
-    this.load.image('handL', './assets/pArmL-01.png');
-    this.load.image('handR', './assets/pArmR-01.png');
-    this.load.image('legL', './assets/pLegL-01.png');
-    this.load.image('legR', './assets/pLegR-01.png');
+    this.load.image('head', './assets/tigerHead-01.png');
+    this.load.image('body', './assets/tigerBody-01.png');
+    this.load.image('handL', './assets/tigerHandL-01.png');
+//    this.load.image('handR', './assets/pArmR-01.png');
+    this.load.image('tail', './assets/tigerEnd-01.png');
+//    this.load.image('legR', './assets/pLegR-01.png');
     
     //---flèche next---
     this.load.image('nextArrow', './assets/green-arrow (1).png');
@@ -106,7 +106,7 @@ function create() {
     soundButton.on('pointerdown', enableMusic);
     
     //----les membres-----
-    var head = this.add.image(50, 380, 'head', Phaser.Math.RND.pick(frames)).setInteractive();
+    var head = this.add.image(300, 92, 'head', Phaser.Math.RND.pick(frames)).setInteractive();
     this.input.setDraggable(head);
 //    head.setScale(2);
     head.setName('head');
@@ -119,56 +119,66 @@ function create() {
     nextArrow.setVisible(false);
     
     //----vars des membres---
-    var body = this.add.image(60, 550, 'body', Phaser.Math.RND.pick(frames)).setInteractive();
+    var body = this.add.image(120, 530, 'body', Phaser.Math.RND.pick(frames)).setInteractive();
     this.input.setDraggable(body);
     body.setName('body');
 //    body.setScale(0.45);
     
-    var handL = this.add.image(310, 92, 'handL', Phaser.Math.RND.pick(frames)).setInteractive();
+    var handL = this.add.image(310, 520, 'handL', Phaser.Math.RND.pick(frames)).setInteractive();
     this.input.setDraggable(handL);
     handL.setName('handL');
 //    handL.setScale(0.45);
     
-    var handR = this.add.image(200, 552, 'handR', Phaser.Math.RND.pick(frames)).setInteractive();
-    this.input.setDraggable(handR);
-    handR.setName('handR');
+//    var handR = this.add.image(200, 552, 'handR', Phaser.Math.RND.pick(frames)).setInteractive();
+//    this.input.setDraggable(handR);
+//    handR.setName('handR');
 //    hips.setScale(0.45);
     
-    var legL = this.add.image(50, 212, 'legL', Phaser.Math.RND.pick(frames)).setInteractive();
-    this.input.setDraggable(legL);
-    legL.setName('legL');
+    var tail = this.add.image(70, 350, 'tail', Phaser.Math.RND.pick(frames)).setInteractive();
+    this.input.setDraggable(tail);
+    tail.setName('tail');
 //    legL.setScale(0.45);
     
-    var legR = this.add.image(310, 570, 'legR', Phaser.Math.RND.pick(frames)).setInteractive();
-    this.input.setDraggable(legR);
-    legR.setName('legR');
+//    var legR = this.add.image(310, 570, 'legR', Phaser.Math.RND.pick(frames)).setInteractive();
+//    this.input.setDraggable(legR);
+//    legR.setName('legR');
 //    legR.setScale(0.45);
     
     //-----les drop zones----
     //  A drop zone
-    var zone = this.add.zone(200, 95, 115, 120).setRectangleDropZone(115, 120);
+    var zone = this.add.zone(140, 142, 115, 140).setRectangleDropZone(115, 140);
     zone.setName('head');
     
     //  A drop zone
-    var zone2 = this.add.zone(211, 227, 80, 137).setRectangleDropZone(80, 137);
+    var zone2 = this.add.zone(190, 278, 220, 137).setRectangleDropZone(220, 137);
     zone2.setName('body');
     
     //  A drop zone
-    var zone3 = this.add.zone(135, 221, 65, 130).setRectangleDropZone(65, 130);
+    var zone3 = this.add.zone(85, 175, 80, 100).setRectangleDropZone(80, 100);
     zone3.setName('handL');
     
     
     //  A drop zone
-    var zone4 = this.add.zone(252, 383, 90, 170).setRectangleDropZone(90, 170);
-    zone4.setName('legR');
+    var zone4 = this.add.zone(315, 392, 90, 140).setRectangleDropZone(90, 140);
+    zone4.setName('tail');
     
     //  A drop zone
-    var zone5 = this.add.zone(160, 385, 90, 170).setRectangleDropZone(90, 170);
-    zone5.setName('legL');
+//    var zone5 = this.add.zone(160, 385, 90, 170).setRectangleDropZone(90, 170);
+//    zone5.setName('legL');
     
     //  A drop zone
-    var zone6 = this.add.zone(270, 230, 40, 130).setRectangleDropZone(40, 130);
-    zone6.setName('handR');
+//    var zone6 = this.add.zone(270, 230, 40, 130).setRectangleDropZone(40, 130);
+//    zone6.setName('handR');
+
+//          var graphics = this.add.graphics();
+//    graphics.lineStyle(2, 0xffff00);
+//    graphics.strokeRect(zone.x - zone.input.hitArea.width / 2, zone.y - zone.input.hitArea.height / 2, zone.input.hitArea.width, zone.input.hitArea.height);
+//    
+//    graphics.strokeRect(zone2.x - zone2.input.hitArea.width / 2, zone2.y - zone2.input.hitArea.height / 2, zone2.input.hitArea.width, zone2.input.hitArea.height);
+//    
+//    graphics.strokeRect(zone3.x - zone3.input.hitArea.width / 2, zone3.y - zone3.input.hitArea.height / 2, zone3.input.hitArea.width, zone3.input.hitArea.height);
+//    
+//    graphics.strokeRect(zone4.x - zone4.input.hitArea.width / 2, zone4.y - zone4.input.hitArea.height / 2, zone4.input.hitArea.width, zone4.input.hitArea.height);
 
  
     this.input.on('dragstart', function (pointer, gameObject) {
@@ -224,7 +234,7 @@ else{
             gameObject.y = gameObject.input.dragStartY;
         }
         
-      if(successfulDropoff === 6){
+      if(successfulDropoff === 4){
             console.log("well done!!!!");
             nextArrow.setVisible(true);
             nextArrow.setInteractive();
@@ -242,11 +252,11 @@ else{
 
 
 function update() {
-    if(successfulDropoff === 6){
+    if(successfulDropoff === 4){
          starScale += 0.001;
         star.setScale(starScale);
-        if (starScale > 0.2){
-            starScale = 0.2;
+        if (starScale > 0.3){
+            starScale = 0.3;
         } }
     
        if (hasBeenClicked === true){
