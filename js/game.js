@@ -56,7 +56,7 @@ function preload() {
 //    this.load.image('legR', './assets/pLegR-01.png');
     
     //---flèche next---
-    this.load.image('nextArrow', './assets/green-arrow (1).png');
+    this.load.image('nextArrow', './assets/g-refresh.png');
     
     //---audio--
     this.load.audio('hold', './assets/hold.wav');
@@ -115,7 +115,7 @@ function create() {
     successfulDropoff = 0;
     
     nextArrow = this.add.image(300, 550, 'nextArrow');
-    nextArrow.setScale(0.7);
+    nextArrow.setScale(0.15);
     nextArrow.setVisible(false);
     
     //----vars des membres---
