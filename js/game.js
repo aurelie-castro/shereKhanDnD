@@ -13,7 +13,7 @@ let config = {
     },
     backgroundColor: '#88e288',
     audio: {
-        disableWebAudio: true
+        disableWebAudio: false
     },
     autoCenter: true
 };
@@ -51,9 +51,7 @@ function preload() {
     this.load.image('head', './assets/tigerHead-01.png');
     this.load.image('body', './assets/tigerBody-01.png');
     this.load.image('handL', './assets/tigerHandL-01.png');
-//    this.load.image('handR', './assets/pArmR-01.png');
     this.load.image('tail', './assets/tigerEnd-01.png');
-//    this.load.image('legR', './assets/pLegR-01.png');
     
     //---flèche next---
     this.load.image('nextArrow', './assets/g-refresh.png');
@@ -107,9 +105,7 @@ function create() {
     //----les membres-----
     var head = this.add.image(300, 92, 'head', Phaser.Math.RND.pick(frames)).setInteractive();
     this.input.setDraggable(head);
-//    head.setScale(2);
     head.setName('head');
-//    head.setScale(0.45);
     
     successfulDropoff = 0;
     
@@ -121,27 +117,16 @@ function create() {
     var body = this.add.image(120, 530, 'body', Phaser.Math.RND.pick(frames)).setInteractive();
     this.input.setDraggable(body);
     body.setName('body');
-//    body.setScale(0.45);
     
     var handL = this.add.image(310, 520, 'handL', Phaser.Math.RND.pick(frames)).setInteractive();
     this.input.setDraggable(handL);
     handL.setName('handL');
-//    handL.setScale(0.45);
     
-//    var handR = this.add.image(200, 552, 'handR', Phaser.Math.RND.pick(frames)).setInteractive();
-//    this.input.setDraggable(handR);
-//    handR.setName('handR');
-//    hips.setScale(0.45);
     
     var tail = this.add.image(70, 350, 'tail', Phaser.Math.RND.pick(frames)).setInteractive();
     this.input.setDraggable(tail);
     tail.setName('tail');
-//    legL.setScale(0.45);
     
-//    var legR = this.add.image(310, 570, 'legR', Phaser.Math.RND.pick(frames)).setInteractive();
-//    this.input.setDraggable(legR);
-//    legR.setName('legR');
-//    legR.setScale(0.45);
     
     //-----les drop zones----
     //  A drop zone
@@ -161,23 +146,6 @@ function create() {
     var zone4 = this.add.zone(315, 392, 90, 140).setRectangleDropZone(90, 140);
     zone4.setName('tail');
     
-    //  A drop zone
-//    var zone5 = this.add.zone(160, 385, 90, 170).setRectangleDropZone(90, 170);
-//    zone5.setName('legL');
-    
-    //  A drop zone
-//    var zone6 = this.add.zone(270, 230, 40, 130).setRectangleDropZone(40, 130);
-//    zone6.setName('handR');
-
-//          var graphics = this.add.graphics();
-//    graphics.lineStyle(2, 0xffff00);
-//    graphics.strokeRect(zone.x - zone.input.hitArea.width / 2, zone.y - zone.input.hitArea.height / 2, zone.input.hitArea.width, zone.input.hitArea.height);
-//    
-//    graphics.strokeRect(zone2.x - zone2.input.hitArea.width / 2, zone2.y - zone2.input.hitArea.height / 2, zone2.input.hitArea.width, zone2.input.hitArea.height);
-//    
-//    graphics.strokeRect(zone3.x - zone3.input.hitArea.width / 2, zone3.y - zone3.input.hitArea.height / 2, zone3.input.hitArea.width, zone3.input.hitArea.height);
-//    
-//    graphics.strokeRect(zone4.x - zone4.input.hitArea.width / 2, zone4.y - zone4.input.hitArea.height / 2, zone4.input.hitArea.width, zone4.input.hitArea.height);
 
  
     this.input.on('dragstart', function (pointer, gameObject) {
@@ -208,8 +176,6 @@ function create() {
             gameObject.y = dropZone.y;
 
             gameObject.input.enabled = false;
-            console.log(dropZone.name == gameObject.name);
-            console.log('successful dropoff of ' + gameObject.name + ' in ' + dropZone.name);
             
             successfulDropoff++;
             correctSound.play();
@@ -217,7 +183,6 @@ function create() {
 else{
             gameObject.x = gameObject.input.dragStartX;
             gameObject.y = gameObject.input.dragStartY;
-            console.log('failed dropoff of ' + gameObject.name + ' in ' + dropZone.name);
     
             wrongSound.play();
         }
@@ -234,7 +199,6 @@ else{
         }
         
       if(successfulDropoff === 4){
-            console.log("well done!!!!");
             nextArrow.setVisible(true);
             nextArrow.setInteractive();
           finishSound.play();
@@ -263,7 +227,6 @@ function update() {
         }
 }
 function onClick(){
-//    window.open("https://www.google.com", "_blank");
     window.location.replace("https://games.caramel.be/mowgli/index.html");
 
 }
