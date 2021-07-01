@@ -29,9 +29,6 @@ var wrongSound;
 var correctSound;
 var finishSound;
 
-var soundButton;
-var hasBeenClicked;
-
 //--var de l'étoile de fin---
 var star;
 var starScale;
@@ -62,9 +59,6 @@ function preload() {
     this.load.audio('correct', './assets/correct.wav');
     this.load.audio('finish', './assets/congratulations.wav');
     
-    //---sound button----
-    this.load.image('soundBtn', './assets/volume-up (2).png');
-    
     //---star at the end---
     this.load.image('star', './assets/g-badge.png');
     
@@ -94,13 +88,6 @@ function create() {
     wrongSound = this.sound.add('wrong');
     correctSound = this.sound.add('correct');
     finishSound = this.sound.add('finish');
-    
-    //----audio  btn----
-    soundButton = this.add.image(50,50, 'soundBtn');
-    soundButton.setScale(0.1);
-    soundButton.setInteractive();
-    soundButton.alpha = 0.5;
-    soundButton.on('pointerdown', enableMusic);
     
     //----les membres-----
     var head = this.add.image(300, 92, 'head', Phaser.Math.RND.pick(frames)).setInteractive();
@@ -221,15 +208,8 @@ function update() {
         if (starScale > 0.3){
             starScale = 0.3;
         } }
-    
-       if (hasBeenClicked === true){
-        soundButton.alpha = 1;
-        }
 }
 function onClick(){
     window.location.replace("https://games.caramel.be/mowgli/index.html");
 
-}
-function enableMusic(){
-    hasBeenClicked = true;
 }
